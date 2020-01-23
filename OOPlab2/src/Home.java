@@ -22,14 +22,14 @@ public class Home extends HttpServlet {
         pw.printf("<!DOCTYPE HTML>\n");
         pw.printf("<HTML><head><meta charset=\"utf-8\"></head>");
         pw.printf("<body>");
-        pw.printf("<br>This is a Home Page");
+        pw.printf("This is a Home Page");
 
         if( req.getSession().getAttribute("name") == null)
         {
             pw.printf("<br>You are not logged in");
             pw.printf("<br>Click to Login: ");
             pw.printf("<a href=\"http://localhost:2020/srv/login\"><b>Login</b></a>");
-            pw.printf("<br>\tor\t");
+            pw.printf("<br><b>or</b>");
             pw.printf("<br>If you dont have an account");
             pw.printf("<br>Click to Signup: ");
             pw.printf("<a href=\"http://localhost:2020/srv/signup\"><b>Signup</b></a>");
