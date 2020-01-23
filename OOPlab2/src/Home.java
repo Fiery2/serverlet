@@ -13,15 +13,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
- 
-@WebServlet(urlPatterns={"/logout"})
-public class Logout extends HttpServlet
-{
+public class Home extends HttpServlet {
+    
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
-        req.getSession().removeAttribute("name");
-        resp.setContentType("text/plain");
+        resp.setContentType("text/html");
         var pw = resp.getWriter();
-        pw.printf("Logged out");
+        pw.printf("<!DOCTYPE HTML>\n");
+        pw.printf("<HTML><head><meta charset=\"utf-8\"></head>");
+        pw.printf("<body>");
+        pw.printf("This is a Home Page");
+        if( request.getSession().getAttribute("name") == null)
+        {
+             pw.printf("login");
+        }
+        else
+        {
+            pw.printf("logout link: http://localhost:2020/srv/logout");
+        }
+       
+        
+        pw.printf("</body></html>");
+    
     }
-
 }

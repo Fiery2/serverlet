@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Jack
+ * @author Jack & Mike
  */
 
 public class Main {

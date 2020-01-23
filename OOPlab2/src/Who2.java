@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Jack
+ * @author Jack & Mike
  */
 import java.io.IOException;
 import javax.servlet.ServletException;

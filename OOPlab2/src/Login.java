@@ -6,7 +6,7 @@
 
 /**
  *
- * @author Jack
+ * @author Jack & Mike
  */
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
@@ -21,9 +21,13 @@ public class Login extends HttpServlet
         resp.setContentType("text/plain");
         var pw = resp.getWriter();
         var name = req.getParameter("user");
+        var pass = req.getParameter("password");
         if( name == null ){
             pw.printf("No username provided");
-        } else {
+        } else if(pass == null){
+            pw.printf("No password provided");
+        }
+        else {
             var sess = req.getSession();
             sess.setAttribute("name", name );
             pw.printf("Logged in as "+name);
