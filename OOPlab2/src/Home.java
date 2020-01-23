@@ -22,18 +22,22 @@ public class Home extends HttpServlet {
         pw.printf("<!DOCTYPE HTML>\n");
         pw.printf("<HTML><head><meta charset=\"utf-8\"></head>");
         pw.printf("<body>");
-        pw.printf("This is a Home Page");
+        pw.printf("<br>This is a Home Page");
+
         if( req.getSession().getAttribute("name") == null)
         {
-            pw.printf("You are not logged in\nClick to Login: ");
-            pw.printf("<a href=\"http://localhost:2020/srv/login\">Login</a>");
-             pw.printf("\n\tor\t\nIf you dont have an account\n Click to Signup: ");
-            pw.printf("<a href=\"http://localhost:2020/srv/signup\">Signup</a>");
+            pw.printf("<br>You are not logged in");
+            pw.printf("<br>Click to Login: ");
+            pw.printf("<a href=\"http://localhost:2020/srv/login\"><b>Login</b></a>");
+            pw.printf("<br>\tor\t");
+            pw.printf("<br>If you dont have an account");
+            pw.printf("<br>Click to Signup: ");
+            pw.printf("<a href=\"http://localhost:2020/srv/signup\"><b>Signup</b></a>");
         }
         else
         {
-            pw.printf("You are logged in\n Click to Logout: ");
-            pw.printf("<a href=\"http://localhost:2020/srv/logout\">\bLogout</a>");
+            pw.printf("<br>You are logged in\n Click to Logout: ");
+            pw.printf("<a href=\"http://localhost:2020/srv/logout\"><b>Logout</b></a>");
         }
        
         
