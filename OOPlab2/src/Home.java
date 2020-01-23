@@ -22,13 +22,14 @@ public class Home extends HttpServlet {
         pw.printf("<HTML><head><meta charset=\"utf-8\"></head>");
         pw.printf("<body>");
         pw.printf("This is a Home Page");
-        if( request.getSession().getAttribute("name") == null)
+        if( req.getSession().getAttribute("name") == null)
         {
              pw.printf("login");
         }
         else
         {
-            pw.printf("logout link: http://localhost:2020/srv/logout");
+            pw.printf("You are logged in\n click to logout");
+            pw.printf("<a href=\"http://localhost:2020/srv/logout\">logout</a>");
         }
        
         

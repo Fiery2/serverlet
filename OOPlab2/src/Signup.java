@@ -9,6 +9,7 @@
  * @author Jack & Mike
  */
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +24,12 @@ public class Signup {
         pw.printf("<!DOCTYPE HTML>\n");
         pw.printf("<HTML><head><meta charset=\"utf-8\"></head>");
         pw.printf("<body>");
-        pw.printf("Usernames");
-        
+        ArrayList<String>A = new ArrayList<String>();
+        pw.printf("Give Username");
+        pw.printf("Give Password");
         
         pw.printf("</body></html>");
         
     }
+   
 }
