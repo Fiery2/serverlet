@@ -22,10 +22,10 @@ public class Login extends HttpServlet
         var pw = resp.getWriter();
         var name = req.getParameter("user");
         var pass = req.getParameter("password");
-        if( name == null ){
-            pw.printf("No username provided");
-        } else if(pass == null){
-            pw.printf("No password provided");
+        if( name == null || Main.A.contains(name)){
+            pw.printf("No/ Wrong username provided");
+        } else if(pass == null|| Main.A.contains(pass)){
+            pw.printf("No/Wrong password provided");
         }
         else {
             var sess = req.getSession();

@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+@WebServlet(urlPatterns={"/home"})
 public class Home extends HttpServlet {
     
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
@@ -24,12 +25,15 @@ public class Home extends HttpServlet {
         pw.printf("This is a Home Page");
         if( req.getSession().getAttribute("name") == null)
         {
-             pw.printf("login");
+            pw.printf("You are not logged in\nClick to Login: ");
+            pw.printf("<a href=\"http://localhost:2020/srv/login\">Login</a>");
+             pw.printf("\n\tor\t\nIf you dont have an account\n Click to Signup: ");
+            pw.printf("<a href=\"http://localhost:2020/srv/signup\">Signup</a>");
         }
         else
         {
-            pw.printf("You are logged in\n click to logout");
-            pw.printf("<a href=\"http://localhost:2020/srv/logout\">logout</a>");
+            pw.printf("You are logged in\n Click to Logout: ");
+            pw.printf("<a href=\"http://localhost:2020/srv/logout\">\bLogout</a>");
         }
        
         

@@ -14,19 +14,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+@WebServlet(urlPatterns={"/signup"})
 public class Signup {
-    
+       
+
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         resp.setContentType("text/html");  
         var pw = resp.getWriter();
-        var name = req.getParameter("user");
-        var pass = req.getParameter("password");
+        var Uname = (String)req.getParameter("user");
+        var pass = (String)req.getParameter("password");
+        User u = new User();
+        
         pw.printf("<!DOCTYPE HTML>\n");
         pw.printf("<HTML><head><meta charset=\"utf-8\"></head>");
         pw.printf("<body>");
-        ArrayList<String>A = new ArrayList<String>();
+        
+        
         pw.printf("Give Username");
+        u.name = Uname;
         pw.printf("Give Password");
+        u.password = pass;
+        Main.A.add(u);
         
         pw.printf("</body></html>");
         
