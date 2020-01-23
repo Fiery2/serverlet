@@ -20,18 +20,34 @@ public class Login extends HttpServlet
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException{
         resp.setContentType("text/plain");
         var pw = resp.getWriter();
-        var name = req.getParameter("user");
-        var pass = req.getParameter("password");
-        if( name == null || Main.A.contains(name)){
-            pw.printf("No/ Wrong username provided");
-        } else if(pass == null|| Main.A.contains(pass)){
-            pw.printf("No/Wrong password provided");
+        var Uname = req.getParameter("user");
+        var pass = req.getParameter("password");/*
+        User tmp = new User();
+        tmp.name = Uname;
+        tmp.password = pass;*/
+        if( Uname == null  ){
+            pw.printf("No username provided");
+        } else if(pass == null){
+            pw.printf("No password provided");
         }
-        else {
-            var sess = req.getSession();
-            sess.setAttribute("name", name );
-            pw.printf("Logged in as "+name);
-        }
+        else{ 
+            
+            for(int i=0;i<Main.A.size();i++){
+                if (Main.A.get(i).name.equals(Uname)){ 
+                    if(Main.A.get(i).password.equals(pass)){       
+                        var sess = req.getSession();
+                        sess.setAttribute("name", Uname );
+                        pw.printf("Logged in as "+Uname);
+                    }
+                    else{
+                        pw.printf("Wrong password");
+                    }
+                
+            }
+            else{
+                pw.printf("Wrong user and/or Password");
+            }
+            }
     }
-
+    }
 }

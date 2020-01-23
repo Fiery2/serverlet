@@ -29,13 +29,18 @@ public class Signup extends HttpServlet {
         pw.printf("<HTML><head><meta charset=\"utf-8\"></head>");
         pw.printf("<body>");
         
-        
-        pw.printf("Give Username");
-        u.name = Uname;
-        pw.printf("Give Password");
-        u.password = pass;
-        Main.A.add(u);
-        
+        if( Uname == null  ){
+            pw.printf("No username provided");
+        } else if(pass == null){
+            pw.printf("No password provided");
+        }
+        else{
+            pw.printf("Give Username");
+            u.name = Uname;
+            pw.printf("<br>Give Password");
+            u.password = pass;
+            Main.A.add(u);
+        }
         pw.printf("</body></html>");
         
     }
