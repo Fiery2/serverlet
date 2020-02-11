@@ -58,8 +58,9 @@ public static void stopJetty() throws Exception {
      */
     @Test
 public void testLogin1() throws Exception{
-    String txt = utility.fetch( "/srv/login?user=bob" ) ;
+    String txt = utility.fetch( "/srv/login?user=bob&password=word" ) ;
     assertTrue( txt.contains("Logged in as bob"));
+    
 }
     
 }
