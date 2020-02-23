@@ -36,7 +36,7 @@ public class Home extends HttpServlet {
         }
         else
         {
-            pw.printf("<br>You are logged in\n Click to Logout: ");
+            pw.printf("<br>You are logged in\n ");
             pw.printf("<a href=\"http://localhost:2020/srv/logout\"><b>Logout</b></a>");
         }
        
