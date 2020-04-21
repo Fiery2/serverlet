@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-import java.net.CookieHandler;
-import java.net.CookieManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import static org.testng.Assert.*;
@@ -22,16 +20,11 @@ import org.eclipse.jetty.util.log.StdErrLog;
  *
  * @author mdibb
  */
-public class LoginNGTest {
+public class SignupNGTest {
     
-    public LoginNGTest() {
+    public SignupNGTest() {
     }
-static CookieManager cookieManager = new CookieManager();
-@BeforeClass
-public static void setupSession(){
-    CookieHandler.setDefault(cookieManager);
-}
-   @BeforeClass
+ @BeforeClass
 public static void startJetty() throws Exception {
     String[] args = new String[]{
         "jetty.home=../jetty",
@@ -49,11 +42,17 @@ public static void stopJetty() throws Exception {
         "--stop"
     };
     org.eclipse.jetty.start.Main.main(args);
-}
-    
+    }
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
     @BeforeMethod
-    public void clearCookies() {
-        cookieManager.getCookieStore().removeAll();
+    public void setUpMethod() throws Exception {
     }
 
     @AfterMethod
@@ -61,20 +60,28 @@ public static void stopJetty() throws Exception {
     }
 
     /**
-     * Test of doGet method, of class Login.
+     * Test of doGet method, of class Signup.
      */
-    @Test
-public void testLogin1() throws Exception{
-    String txt0 = utility.fetch( "/srv/signup?user=bob&password=word" ) ;
-    String txt = utility.fetch( "/srv/login?user=bob&password=word" ) ;
-    assertTrue( txt.contains("Logged in as bob"));
+   @Test
+public void testSignup1() throws Exception{
+    String txt = utility.fetch( "/srv/signup?user=bob&password=word" ) ;
+    String txt2 = utility.fetch( "/srv/login?user=bob&password=word" ) ;
+    assertTrue( txt2.contains("Logged in as bob"));
+    
     
 }
 @Test
-public void testLogin2() throws Exception{
+public void tesetSignup2() throws Exception{
    String txt0 = utility.fetch( "/srv/signup?user=bob&password=word" ) ;
     String txt = utility.fetch( "/srv/login?user=bob&password=word" ) ;
     assertFalse( txt.contains("Logged out")); 
+}
+@Test
+public void testSignup3() throws Exception{
+    String txt = utility.fetch( "/srv/signup?user=bob&password=word" ) ;
+    assertFalse( txt.contains("Logged in as bob"));
+    
+    
 }
     
 }
